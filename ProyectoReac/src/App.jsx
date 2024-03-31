@@ -1,10 +1,18 @@
 import './App.css'
+import ItemListContainer from './ItemListContainer/ItemListContainer'
+import NavBar from './NavBar/NavBar'
+import { ChakraProvider } from '@chakra-ui/react'
+
 
 function App() {
  
 
   return (
-   <div></div>
+  
+    <ChakraProvider>
+    <NavBar/>
+    <ItemListContainer title= "DJBPM" />
+    </ChakraProvider>
   )
 }
 
