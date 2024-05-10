@@ -8,11 +8,7 @@ import {
     MenuButton,
     MenuList,
     MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
-    Button
+    Button,
   } from '@chakra-ui/react'
 import logo from "../../../img/logobpm.jpeg"
 import "./NavBar.css"
@@ -26,17 +22,15 @@ const NavBar = () => {
           <MenuButton as={Button} rightIcon={<CgChevronDownR />} alignItems={"center"}>
               DJBPM
           </MenuButton>
-          <MenuList>
+          <MenuList >
               <MenuItem>INICIO</MenuItem>
-              <MenuItem>STORE</MenuItem>
-              <MenuItem>RECORD</MenuItem>
-              <MenuItem>RENTAL</MenuItem>
-              <MenuItem>DATA</MenuItem>
+              <MenuItem>Mixer</MenuItem>
+              <MenuItem>Auriculares</MenuItem>
+              <MenuItem>Controlador</MenuItem>
+             
           </MenuList>
           </Menu>
-          
-    
-          <CartWidget/>
+        <CartWidget/>
     </Flex>
   )
 }
