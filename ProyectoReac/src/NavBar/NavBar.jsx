@@ -12,6 +12,7 @@ import {
   } from '@chakra-ui/react'
 import logo from "../../../img/logobpm.jpeg"
 import "./NavBar.css"
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
@@ -23,10 +24,10 @@ const NavBar = () => {
               DJBPM
           </MenuButton>
           <MenuList >
-              <MenuItem>INICIO</MenuItem>
-              <MenuItem>Mixer</MenuItem>
-              <MenuItem>Auriculares</MenuItem>
-              <MenuItem>Controlador</MenuItem>
+              <MenuItem><Link to="/categoria/Inicio" >INICIO</Link></MenuItem>
+              <MenuItem><Link to="/categoria/Mixer" >MIXER</Link></MenuItem>
+              <MenuItem><Link to="/categoria/Auriculares" >AURICULARES</Link></MenuItem>
+              <MenuItem><Link to="/categoria/Controlador" >CONTROLADOR</Link></MenuItem>
              
           </MenuList>
           </Menu>

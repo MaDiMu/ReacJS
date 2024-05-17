@@ -9,7 +9,8 @@ import {useParams } from 'react-router-dom';
 const ItemListContainer = ({title}) => {
   const [products, setProducts] = useState([])
   const {categoryId} = useParams ()
-
+ 
+  
 
   useEffect (()=>{
     const dataProductos = categoryId ? getProductsByCategory(categoryId):
@@ -18,7 +19,7 @@ const ItemListContainer = ({title}) => {
     dataProductos
         .then((el)=>setProducts(el))
         .catch((error) =>  console.log(error))
-  },[])
+  },[categoryId])
   return (
     <Box>
       <Heading textAlign={"center"} mt={3}>

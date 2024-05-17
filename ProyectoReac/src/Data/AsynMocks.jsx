@@ -3,7 +3,7 @@ export const productos =[{
     id: 1,
     nombre: "AIAIA Tm-2" ,
     precio: 550000,
-    categoria: "auriculares",
+    categoria: "AURICULARES",
     stock: 4,
     descripcion:"IAIA fue fundada en 2006 en Dinamarca, y es una de las empresas numero uno de disños de auriculares, para poder disfrutar en el trabajao colectivo o arriba de una cabina de modo profesional",
     img: "../../../img/Aiaiai_TMA-2_Move_03-Auwnr2Gj.jpg",
@@ -12,7 +12,7 @@ export const productos =[{
     id: 2,
     nombre: "Pioneer Hdj-Cue1",
     precio: 155000,
-    categoria: "auriculares",
+    categoria: "AURICULARES",
     stock: 3,
     descripcion: "Diseñados para DJ principiantes y entusiastas de la música profesional, los auriculares para DJ Pioneer HDJ-CUE1 brindan un sonido rico y un aspecto elegante. Fuera de la caja, vienen en un acabado plateado oscuro, pero se pueden personalizar en una variedad de detalles coloridos con la aplicación de cualquiera de los paquetes de accesorios disponibles por separado.",
     img:"../../../img/pioneerxdj.webp",
@@ -59,7 +59,9 @@ export const productos =[{
 
     export const getProductById= (id) => {
         return new Promise((resolve)=>{
-            const productosFiltrado = productos.find((prod)=>prod.id === parseInt(id));
-            resolve(productosFiltrado);
+            const productoFiltrado = productos.find((prod)=>prod.id === parseInt(id));
+            setTimeout(()=>{
+            resolve(productoFiltrado);
+            },2000)
         })
     }

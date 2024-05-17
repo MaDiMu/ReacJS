@@ -1,10 +1,15 @@
 import React from 'react'
 import ItemCount from '../../ItemCount/ItemCount'
+import { Card, CardBody, CardFooter, Stack, Heading,Text, Divider,ButtonGroup, Image,Button } from '@chakra-ui/react';
 
 const ItemDetail = ({nombre, precio,stock,img}) => {
-    
+  
+  const onAdd=(quantity) => {
+    console.log(`Agregastes ${quantity} unidades`)
+  }
+
   return (
-    <div>
+    
         <Card maxW='sm'>
     <CardBody>
       <Image
@@ -24,9 +29,10 @@ const ItemDetail = ({nombre, precio,stock,img}) => {
     <CardFooter>
       <ButtonGroup spacing='2'>
       </ButtonGroup>
+      <ItemCount stock={stock} initialValue={1} onAdd={onAdd}/>
     </CardFooter>
   </Card>
-    </div>
+  
   )
 }
 
