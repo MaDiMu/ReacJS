@@ -1,16 +1,10 @@
-import React from 'react'
-import ItemCount from '../../ItemCount/ItemCount'
+import React from 'react';
 import { Card, CardBody, CardFooter, Stack, Heading,Text, Divider,ButtonGroup, Image,Button } from '@chakra-ui/react';
+import {Link,} from "react-router-dom"
 
-const ItemDetail = ({nombre, precio,stock,img}) => {
-  
-  const onAdd=(quantity) => {
-    console.log(`Agregastes ${quantity} unidades`)
-  }
-
+const Item = ({nombre, precio,img,id}) => {
   return (
-    
-        <Card maxW='sm'>
+    <Card maxW='sm'>
     <CardBody>
       <Image
         src={img}
@@ -28,12 +22,17 @@ const ItemDetail = ({nombre, precio,stock,img}) => {
     <Divider />
     <CardFooter>
       <ButtonGroup spacing='2'>
+        <Button variant='solid' colorScheme='blue'>
+          <Link to= {`/producto/${id}`}>
+          Ver detalle
+          </Link>
+        </Button>
+       
       </ButtonGroup>
-      <ItemCount stock={stock} initialValue={1} onAdd={onAdd}/>
+      
     </CardFooter>
   </Card>
-  
   )
 }
 
-export default ItemDetail
+export default Item

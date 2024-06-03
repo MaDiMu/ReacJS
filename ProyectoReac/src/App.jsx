@@ -1,11 +1,13 @@
 import './App.css'
-import ItemListContainer from './ItemListContainer/ItemListContainer'
-import NavBar from './NavBar/NavBar'
 import { ChakraProvider } from '@chakra-ui/react'
-import ItemCount from './ItemCount/ItemCount'
+import ItemCount from './Components/ItemCount/ItemCount'
 import {BrowserRouter,Route,Routes } from 'react-router-dom';
-import ItemDetailContainer from './assets/ItemDetailContainer/ItemDetailContainer'
-import PageNotFound from './PageNotFound/PageNotFound'
+import PageNotFound from './Components/PageNotFound/PageNotFound'
+import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer'
+import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
+import NavBar from './Components/NavBar/NavBar';
+import { ContextProvider } from './Context/CartContext';
+import Cart from './Components/Cart/Cart';
 
 
 
@@ -17,17 +19,20 @@ function App() {
   return (
   
     <ChakraProvider>
-      <BrowserRouter>
-      <NavBar/>
-      <Routes>
-        <Route path='/' element={<ItemListContainer title= "DJBPM" />}/>
-        <Route path='/categoria/:categoryId' element={<ItemListContainer title= "DJBPM" />}/>
-        <Route path='/productos/:productId' element={ItemDetailContainer} ></Route>
-        <Route path='*' element ={<PageNotFound/>}></Route>
-      </Routes>
-    
-       <ItemCount/>
-      </BrowserRouter>
+      <ContextProvider>
+        <BrowserRouter>
+        <NavBar/>
+        <Routes>
+          <Route path='/' element={<ItemListContainer title= "DJBPM" />}/>
+          <Route path='/categoria/:categoryId' element={<ItemListContainer title= "DJBPM" />}/>
+          <Route path='/productos/:productId' element={ItemDetailContainer} ></Route>
+          <Route path='*' element ={<PageNotFound/>}></Route>
+          <Route path='/cart' element={< Cart/> } />
+        </Routes>
+      
+        <ItemCount/>
+        </BrowserRouter>
+        </ContextProvider>
     </ChakraProvider>
   )
 }

@@ -10,7 +10,7 @@ import {
     MenuItem,
     Button,
   } from '@chakra-ui/react'
-import logo from "../../../img/logobpm.jpeg"
+import logo from "../../assets/img/logobpm.jpeg"
 import "./NavBar.css"
 import { Link } from 'react-router-dom';
 
@@ -31,7 +31,9 @@ const NavBar = () => {
              
           </MenuList>
           </Menu>
-        <CartWidget/>
+        <Link to='/cart'>
+          <CartWidget/>
+        </Link>
     </Flex>
   )
 }
