@@ -23,7 +23,7 @@ const Item = ({nombre, precio,img,id}) => {
     <CardFooter>
       <ButtonGroup spacing='2'>
         <Button variant='solid' colorScheme='blue'>
-          <Link to= {`/producto/${id}`}>
+          <Link to= {`/productos/${id}`}>
           Ver detalle
           </Link>
         </Button>

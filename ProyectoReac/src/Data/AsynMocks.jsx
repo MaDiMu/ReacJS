@@ -1,4 +1,4 @@
-import img from "../assets/img/Aiaiai_TMA-2.jpg"
+
 export const productos =[{
     id: 1,
     nombre: "AIAIA Tm-2" ,
@@ -6,7 +6,7 @@ export const productos =[{
     categoria: "AURICULARES",
     stock: 4,
     descripcion:"IAIA fue fundada en 2006 en Dinamarca, y es una de las empresas numero uno de disños de auriculares, para poder disfrutar en el trabajao colectivo o arriba de una cabina de modo profesional",
-    img: {img},
+    img: "../../../assets/img/Aiaiai_TMA-2.jpg",
 },
 {
     id: 2,
@@ -20,7 +20,7 @@ export const productos =[{
 {id:3,
     nombre: "Allen & Heath Xone 96", 
     precio: 4800000,
-    categoria: " MIXER ",
+    categoria: "MIXER",
     stock: 3,
     descripcion: "Xone 96 es la más esperada renovación de la mítico mixer Xone 92, sin duda uno de los mejores mixers djs de la historia. Xone renueva su buque insignia, el mixer que utiliza medio planeta y que se ha ganado su fama demostrando en cada uso que puede retorcerse sin limites y sacar lo mejor de cada Dj.",
     img: '../assets/img/xone96.jpg',

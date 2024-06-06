@@ -2,32 +2,47 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import { getProductById } from '../../Data/AsynMocks';
 import ItemDetail from '../ItemDetail/ItemDetail'
+import { Box, Flex} from '@chakra-ui/react';
+import { doc, getDoc } from 'firebase/firestore';
+import {db} from '../../config/firebase'
 
 const ItemDetailContainer = () => {
-    const[productos, setProducto]=useState({})
+    const[producto, setProducto]=useState({})
+    const [loading, setLoading] = useState(true)
+  
     const[productId]= useParams ()
 
     const navigate = useNavigate() 
 
     useEffect(()=>{
-        getProductById(productId)
-        .then((prod)=>{
-          if(!prod){
-            navigate('/*')
+        const getProduct = async()=>{
+          const queryRef = doc(db,'productos',productId)
+          const response = await getDoc(queryRef)
+          const newItem ={
+            ...response.data(),
+            id: response.id
           }
-          else{
-            setProducto(prod)}
-          }
-          )
-        .catch((error)=> console.log(error))
+          setProducto(newItem)
+          setLoading(false)
+          
+        }
+        getProduct()
     },[productId])
 
   return (
-    <div>
-        <ItemDetail {...productos}/>
-    </div>
+    <>
+    {
+      loading ?
+        <Flex justify={'Center'} align={'center'} h={'50vh'}>
+          <Spinner color='red.500' />
+        </Flex>
+        :
+    <Box>
+        <ItemDetail {...producto}/>
+    </Box>
+    }
+    </>
   )
 }
 

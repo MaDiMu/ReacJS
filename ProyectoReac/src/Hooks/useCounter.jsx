@@ -9,11 +9,11 @@ const useCounter = (initialValue,stock) => {
     const decrementar = () => {
         count > initialValue && setCount (count - 1)
     }
-  return (
+  return {
    count,
    incrementar,
    decrementar
-  )
+  }
 }
 
 export default useCounter

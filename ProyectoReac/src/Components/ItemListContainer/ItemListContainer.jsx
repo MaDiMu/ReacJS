@@ -1,41 +1,56 @@
-import { Box, Center, Heading } from '@chakra-ui/react';
+import { Box, Center, Flex, Heading } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { getProducts, getProductsByCategory } from '../../Data/AsynMocks';
 import ItemList from '../ItemList/ItemList';
 import {useNavigate, useParams } from 'react-router-dom';
 import { Spinner } from '@chakra-ui/react'
+import {db} from "../../config/firebase"
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 
 
 const ItemListContainer = ({title}) => {
-  const [products, setProducts] = useState([])
-  const [loading, setloading]= useState (true)
-  const {categoryId} = useParams ()
-  const navigate =useNavigate()
+  const [products, setProducts,] = useState([]);
+  const [loading, setloading]= useState (true);
+  const {categoryId} = useParams ();
+  
  
   
 
   useEffect (()=>{
-    const dataProductos = categoryId ? getProductsByCategory(categoryId):
-    getProducts()
+    setloading(true)
+    const getData = async () =>{
+      const coleccion = collection(db,'productos')
+      const queryRef = !categoryId ?
+      coleccion
+      :
+      query(coleccion, where('categoria','==',categoryId))
+      const response = await getDocs(queryRef)
 
-    dataProductos
-        .then((el)=>{if (!prod){
-          navigate('/*')
+      const productos = response.docs.map((doc)=>{
+        const newItem ={
+          ...doc.data(),
+          id:doc.id
         }
-        else{
-        setProducts(el)}})
-        .catch((error) =>  console.log(error))
-        .finally(()=> setloading(false))
+        return newItem
+        
+      })
+      setProducts(productos)
+      setloading(false)
+      
+    }
+    getData()
   },[categoryId])
   return (
     <Box>
       <Heading textAlign={"center"} mt={3}>
           {title}
       </Heading>
-      {
+     {
         loading ?
-        <Spinner color='red.500' />
+        <Flex justify={'Center'} align={'center'} h={'50vh'}>
+          <Spinner color='red.500' />
+        </Flex>
         :<ItemList products={products}/>
       }
      

@@ -11,11 +11,22 @@ import {
     TableCaption,
     TableContainer,
     Button,
+    Flex,
+    Heading,
   } from '@chakra-ui/react'
   import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from 'react-router-dom';
  
 const Cart = () => {
     const {cart,getTotal,removeItem,cleanCart} = useContext (Context)
+    if(cart.length ===0 ){
+        return(
+            <Flex direction={'column'} justify={'center'} align={'center'} mt={10}>
+                <Heading> Todavia no agregastes productos</Heading>
+                <Link to='/'>Ver productos</Link>
+            </Flex>
+        )
+    } else {
   return (
     <TableContainer>
   <Table variant='striped' colorScheme='teal'>
@@ -59,6 +70,7 @@ const Cart = () => {
   </Table>
 </TableContainer>
   )
+    }
 }
 
 export default Cart
