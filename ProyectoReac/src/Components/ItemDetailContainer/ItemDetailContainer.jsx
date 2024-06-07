@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
     const[producto, setProducto]=useState({})
     const [loading, setLoading] = useState(true)
   
-    const[productId]= useParams ()
+    const{productId}= useParams ()
 
     const navigate = useNavigate() 
 
@@ -38,7 +38,7 @@ const ItemDetailContainer = () => {
           <Spinner color='red.500' />
         </Flex>
         :
-    <Box>
+    <Box w={'60%'} minHeight={'40hv'} margin={'0 auto'} mt={10} borderRadius={'10px'}>
         <ItemDetail {...producto}/>
     </Box>
     }
